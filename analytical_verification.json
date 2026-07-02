@@ -1,0 +1,11 @@
+{
+  "theta_deg": 30.0,
+  "M": 0.03,
+  "X": 55.0,
+  "t_recovered_min": 6.049404474606501,
+  "t_recovered_max": 59.99516700584387,
+  "points_in_t_range": 1500,
+  "total_points": 1500,
+  "mean_residual": 1.5048270052526411e-05,
+  "max_residual": 4.051144748251634e-05
+}

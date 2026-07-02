@@ -1,0 +1,21 @@
+{
+  "timestamp_utc": "2026-07-02T08:28:47.837015+00:00",
+  "n_points": 1500,
+  "raw_optimizer_output": {
+    "theta_deg": 30.000037770561097,
+    "M": 0.03000025914496654,
+    "X": 54.9999157627236,
+    "loss": 7.556124086575238
+  },
+  "final_answer": {
+    "theta_deg": 30.0,
+    "M": 0.03,
+    "X": 55.0
+  },
+  "verification_l1_error": {
+    "total_l1": 1.498716722320701,
+    "mean_l1": 0.000999144481547134,
+    "max_l1": 0.00310032635464097
+  },
+  "desmos_latex": "\\left(t*\\cos(0.5236)-e^{0.03\\left|t\\right|}\\cdot\\sin(0.3t)\\sin(0.5236)+55.0,42+t*\\sin(0.5236)+e^{0.03\\left|t\\right|}\\cdot\\sin(0.3t)\\cos(0.5236)\\right)"
+}

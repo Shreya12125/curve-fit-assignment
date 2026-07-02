@@ -1,0 +1,17 @@
+Curve Parameter Fit Results
+============================
+Timestamp (UTC): 2026-07-02T08:28:47.837015+00:00
+Data points used: 1500
+
+Final answer:
+  theta = 30.0 deg
+  M     = 0.03
+  X     = 55.0
+
+Verification (L1 error against all data points):
+  total L1 error : 1.498717
+  mean L1 error  : 0.000999
+  max L1 error   : 0.003100
+
+Desmos / LaTeX submission string:
+\left(t*\cos(0.5236)-e^{0.03\left|t\right|}\cdot\sin(0.3t)\sin(0.5236)+55.0,42+t*\sin(0.5236)+e^{0.03\left|t\right|}\cdot\sin(0.3t)\cos(0.5236)\right)
