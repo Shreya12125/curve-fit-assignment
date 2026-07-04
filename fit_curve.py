@@ -9,27 +9,27 @@ for t in (6, 60), given a cloud of (x, y) points sampled from the curve
 
 Approach
 --------
-1. Structural insight: subtracting the offsets (X, 42) from (x, y) leaves
-   a standard 2D rotation matrix [[cos, -sin], [sin, cos]] applied to a
+1. Structural insight: Transforms X to (X, 42) from (x, y)
+   2D rotation matrix [[cos, -sin], [sin, cos]] of a point in space.
    base curve g(t) = (t, e^(M|t|) * sin(0.3t)). So theta is a pure
-   rotation of that base curve, and X is a horizontal shift (the y-shift,
-   42, is already given, not unknown).
+   X is the horizontal shift (y-shift, translation) of that base curve, and rotation of that base curve,
+   Not unknown (42, is already given).
 
 2. Because we don't know the t-value behind each data point, this is a
-   curve-fitting problem, not direct algebra. For any candidate
-   (theta, M, X), we densely sample the resulting curve over t in (6, 60)
-   and, for every data point, take the minimum L1 distance to any point
-   on that candidate curve. Summing this over all data points gives a
-   loss function for the candidate parameters.
+   It is not an algebra problem and it is not a curve fitting problem—it is a curve fitting problem. For any candidate
+   Taking a large number of samples of the resulting curve over t in (6, 60), (theta, M, X).
+   Compute the minimum distance to any point and for each data point,
+   On that candidate curve. The sum of this over all the data points is a
+   Loss function to be minimized for proposed parameters.
 
-3. Global optimization: scipy.optimize.differential_evolution over the
+3. Optimization over the whole range (scipy.optimize.differential_evolution over the)
    bounded parameter box (theta in (0,50) deg, M in (-0.05,0.05),
-   X in (0,100)), since the nearest-point loss surface is non-convex.
+   The nearest-point loss surface is not convex and so X in (0,100)).
 
-4. Verification: reconstruct the curve with the fitted parameters and
-   confirm the residual L1 error against every data point is ~0
-   (bounded by grid resolution only), confirming an exact recovery
-   rather than an approximate fit.
+4. Verification: use the fitted parameters to construct the curve and compare it to the original curve.
+   Check the value of the error in L1 is ~ 0.Check that the error in L1 is close to 0 for each data point.
+   A true recovery within the grid resolution given (limited only by the grid resolution).
+   Rather than a loose, fit.
 """
 
 import json
