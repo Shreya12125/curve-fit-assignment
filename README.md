@@ -31,25 +31,25 @@ X     = 55
 **Desmos / LaTeX submission string:**
 
 ```
-\left(t*\cos(0.5236)-e^{0.03\left|t\right|}\cdot\sin(0.3t)\sin(0.5236)+55,42+t*\sin(0.5236)+e^{0.03\left|t\right|}\cdot\sin(0.3t)\cos(0.5236)\right)
+\left(t*\cos(0.5236)-e^{0.03\left|t\right|}\cdot\sin(0.3t)\sin(0.5236)+55.0,42+t*\sin(0.5236)+e^{0.03\left|t\right|}\cdot\sin(0.3t)\cos(0.5236)\right)
 ```
 
 domain: `6 <= t <= 60`
 
-Verified against all 1500 given points: mean L1 residual ≈ 0.001,
-max residual ≈ 0.003 — effectively zero (bounded only by the resolution
-of the verification grid). This confirms an exact recovery of the
-generating parameters rather than an approximate fit.
+Residuals of L1 fit to all 1500 given points: mean ≈ 0.001,
+max residual ≈ 0.003 — essentially zero (limited only by the resolution)
+of the verification grid (see above). This is an accurate recovery of the
+Generating parameters instead of an approximation.
 
 ## Explanation of Approach
 
 ### Problem framing
 
-The task was to recover three unknown parameters — θ, M, and X — from a
-parametric curve equation, given only 1500 (x, y) points sampled from
-that curve. Critically, the value of `t` behind each point was not
-provided, so the equations could not be solved directly by
-substitution; this had to be treated as a curve-fitting problem rather
+The task was to identify three unknown parameters: θ, M and X from a
+parametric curve equation with just 1500 (x, y) points sampled from
+that curve. Most importantly, the value of `t` for each point was not
+It would be impossible to solve the equations directly, provided . . . . . . . .
+a curve fitting problem had to be dealt with, since substitution was not possible; this had to be treated as a curve fitting problem rather
 than an algebraic one.
 
 ### Structural insight
@@ -70,14 +70,14 @@ sideways.
 
 ### Fitting method
 
-Since the corresponding `t` for each data point was unknown, I defined
-a loss function: for any candidate (θ, M, X), generate the resulting
-curve by densely sampling `t` across its valid range (6 to 60), then
-for each of the 1500 data points, compute the L1 distance to the
-*nearest* point on that generated curve. Summing this over all points
-gives a single score for how well a candidate (θ, M, X) explains the
-data. This mirrors the same L1-distance metric used in the
-assignment's own grading criteria.
+As the corresponding t value for each data point was not known, I created
+a loss function: given any candidate (θ, M, X) produce the resulting
+plot it on a curve using dense sampling of `t`, over its range of defined values (from 6 to 60), then
+Use the L1 distance to the graph to compute for each of the 1500 data points.
+The point on that generated curve that is closest to a given point. Integrating over all the points
+gives one score for the candidate's (θ, M, X) explanation of the
+data. This is the same L1-distance metric as in the
+According to their individual assignment's rubric.
 
 ### Optimization
 
@@ -166,6 +166,8 @@ pip install -r requirements.txt
 python3 fit_curve.py
 python3 analytical_verification.py
 ```
+# output from desmos
+![alt text](image.png)
 
 `fit_curve.py` prints results to the console and saves them to
 `results.json` / `results.txt`. `analytical_verification.py` runs the
